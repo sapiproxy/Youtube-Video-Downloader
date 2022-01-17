@@ -1,0 +1,172 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Youtube Video Downloader</title>
+<style>
+body{
+background:black;
+padding:0;
+margin:0;
+color:white;
+}
+
+
+
+
+.card{
+position:absolute;
+top:50px;
+left:300px;
+height:250px;
+width:300px;
+background:linear-gradient(0deg,black,#262626);
+}
+h5{
+position:relative;
+top:5px;
+left:50px;
+color:red;
+
+}
+.card:before,
+.card:after{
+content:" ";
+position:absolute;
+top:-4px;
+left:-4px;
+background:linear-gradient(45deg,red,green,orange,pink,blue,yellow);
+height: calc(100% + 8px);
+width: calc(100% + 8px);
+background-size:400%;
+animation:animate 10s linear infinite;
+z-index:-1;
+}
+.card:after{
+filter:blur(20px);
+
+}
+
+
+.link{
+position:absolute;
+top:80px;
+left:25px;
+width:250px;
+border:0;
+border-radius:5px;
+z-index:5:
+}
+
+@keyframes animate{
+
+0%{
+background-position:0 0;
+}
+50%{
+background-position:300% 0;
+
+}
+100%{
+background-position:0 0;
+}
+
+}
+
+
+
+.formte{
+position:relative;
+top:80px;
+left:70px;
+
+
+
+}
+
+#btn{
+position:fixed;
+top:250px;
+left:400px;
+z-index:6;
+border:0;
+background:#83EEFF;
+
+}
+
+.row3{
+position:fixed;
+top:350px;
+left:300px;
+}
+</style>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body class="bg-dark">
+  <div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+      <div class="card-header bg-info">
+        <h5>Youtube Video Downloader</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+        
+              <input type="txt" placeholder="Paste Here YOUTUBE Copied Link"  name="link" class="form-control link" required>
+            </div>
+          </div>
+        </div>
+        <form class="form-download">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+        
+                <select class="form-control formte" required>
+                  <option selected disabled>Select Video Formate</option>
+                  <option value="mp3">Mp3</option>
+                  <option value="mp4a">144 Mp4</option>
+                  <option value="360">360 Mp4</option>
+                  <option value="480">480 Mp4</option>
+                  <option value="720">720 Mp4</option>
+                  <option value="1080">1080 Mp4</option>
+                  <option value="4k">4k Mp4</option>
+                  <option value="8k">8k Mp4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row3">
+            <div class="col-md-12">
+              <div class="form-group mt-4 download-video">
+     
+
+			<button id="btn" class="btn btn-success btn-block click-btn-down" type="submit">Download</button>
+
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $(".click-btn-down").click(function(){
+      var link = $(".link").val();
+    var fromate = $(".formte").children("option:selected").val();
+    var src =""+link+"="+fromate+"";
+    downloadVideo(link,fromate);
+  });
+  function downloadVideo(link,fromate) {
+      $('.download-video').html('<iframe style="width:100%;height:60px;border:0;overflow:hidden;" scrolling="no" src="https://loader.to/api/button/?url='+link+'&f='+fromate+'"></iframe>');
+  }
+</script>
+</html>
